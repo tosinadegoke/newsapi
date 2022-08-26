@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #user apps
-    'rest_framework'
+    'rest_framework',
     'news'
 ]
 
