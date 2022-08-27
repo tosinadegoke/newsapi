@@ -30,3 +30,29 @@ class ArticleSerializer(serializers.Serializer):
             
         instance.save()
         return instance
+    
+    #adding validators
+    
+    def validate(self, data):
+        """
+        Object-level validator.
+            The method checks that the description and the title field have different data.
+
+        Args:
+            data (dictionary): Data passed from the API endpoint
+        """        
+        if data['title'] == data['description']:
+            raise serializers.ValidationError('Title and Description must be different')
+        return data
+    
+    
+    def validate_title(self, value):
+        """Field-level validator.
+            The method ensures the lenght of title field is not less than 60 charaters.
+
+        Args:
+            data (dictionary): Data passed from the API endpoint.
+        """        
+        if len(value) < 60:
+            raise serializers.ValidationError('The title must be 60 characters or more.')
+        return value

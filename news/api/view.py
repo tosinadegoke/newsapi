@@ -89,3 +89,6 @@ class ArticleDetailsView(APIView):
         article = self.get_object(pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    
+    
